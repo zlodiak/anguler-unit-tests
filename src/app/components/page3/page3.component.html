@@ -1,0 +1,19 @@
+<p>page3 works!</p>
+
+<button (click)="getWordsFromService()">get words from service</button>
+
+<ng-container *ngIf="serviceWords.length">
+    <div *ngFor="let word of serviceWords">
+        {{ word }}
+    </div>
+</ng-container>
+
+<hr>
+
+<button (click)="getWordsFromComponets()">get words from component</button>
+
+<ng-container *ngIf="componentWords.length">
+    <div *ngFor="let word of componentWords">
+        {{ word }}
+    </div>
+</ng-container>
