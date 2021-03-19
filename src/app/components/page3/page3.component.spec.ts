@@ -41,10 +41,9 @@ describe('Page3Component', () => {
 
     const btn = compliedComponent.querySelector('#getWordsFromComponet');
     btn.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
 
-    setTimeout(() => {
-      expect(compliedComponent.querySelector('.word-elem')).toBeTruthy();  
-    }, 100);
+    expect(compliedComponent.querySelector('.word-elem')).toBeTruthy();  
   });
 
   it('should display list after getWords-button', () => {
@@ -53,12 +52,22 @@ describe('Page3Component', () => {
 
     const btn = compliedComponent.querySelector('#getWordsBtn');
     btn.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
 
-    setTimeout(() => {
-      expect(compliedComponent.querySelector('.word-el')).toBeTruthy();  
-    }, 1000);
+    expect(compliedComponent.querySelector('.word-el')).toBeTruthy();  
+  });
 
-    // tick(1000);
-    // expect(compliedComponent.querySelector('.word-el')).toBeTruthy(); 
+  it('should display 2 buttons', () => {
+    fixture.detectChanges();
+    const compliedComponent = fixture.debugElement.nativeElement;
+    const btns = compliedComponent.querySelectorAll('button');
+    expect(btns.length).toBe(2);
+  });
+
+  it('should not display words before clicking', () => {
+    fixture.detectChanges();
+    const compliedComponent = fixture.debugElement.nativeElement;
+    const words = compliedComponent.querySelectorAll('.word');
+    expect(words.length).toBe(0);
   });
 });

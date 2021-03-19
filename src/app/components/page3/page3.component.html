@@ -1,9 +1,9 @@
-<p>page3 works!</p>
+<p id="page3Greeting">page3 works!</p>
 
 <button (click)="getWordsFromService()" id="getWordsBtn">get words from service</button>
 
 <ng-container *ngIf="serviceWords.length">
-    <div *ngFor="let word of serviceWords" class="word-el">
+    <div *ngFor="let word of serviceWords" class="word word-el">
         {{ word }}
     </div>
 </ng-container>
@@ -13,7 +13,7 @@
 <button (click)="getWordsFromComponets()" id="getWordsFromComponet">get words from component</button>
 
 <ng-container *ngIf="componentWords.length">
-    <div *ngFor="let word of componentWords" class="word-elem">
+    <div *ngFor="let word of componentWords" class="word word-elem">
         {{ word }}
     </div>
 </ng-container>

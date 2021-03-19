@@ -24,6 +24,13 @@ describe('Page1Component', () => {
     fixture.detectChanges();
   });
 
+  // it('should display 200 todos', () => {
+  //   fixture.detectChanges();
+  //   const compliedComponent = fixture.debugElement.nativeElement;
+  //   const todos = compliedComponent.querySelectorAll('.todo-elem');
+  //   expect(todos.length).toBe(200);
+  // });
+
   // it('should create', () => {
   //   expect(component).toBeTruthy();
   // });
