@@ -20,7 +20,7 @@ import { Page3Component } from './components/page3/page3.component';
     FormsModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
