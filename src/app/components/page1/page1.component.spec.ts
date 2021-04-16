@@ -1,6 +1,13 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { Observable, of } from "rxjs";
+import {
+  async,
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Observable, of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TodosService } from 'src/app/services/todos.service';
 import { Page1Component } from './page1.component';
@@ -11,11 +18,10 @@ describe('Page1Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Page1Component ],
-      imports: [TodosService],
+      declarations: [Page1Component],
+      imports: [HttpClientModule],
       providers: [TodosService],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,12 +30,18 @@ describe('Page1Component', () => {
     fixture.detectChanges();
   });
 
-  // it('should display 200 todos', () => {
+  // it('should display 200 todos', async(() => {
+  // fixture.whenStable().then(() => {
   //   fixture.detectChanges();
   //   const compliedComponent = fixture.debugElement.nativeElement;
   //   const todos = compliedComponent.querySelectorAll('.todo-elem');
-  //   expect(todos.length).toBe(200);
+  //   fixture.detectChanges();
+  //   expect(compliedComponent.querySelector('p')).toBeTruthy();
   // });
+  // fixture.detectChanges();
+  // expect(compliedComponent.querySelector('p')).toBeTruthy();
+  // expect(todos.length).toBe(200);
+  // }));
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();
@@ -44,5 +56,5 @@ describe('Page1Component', () => {
   //   fixture.whenStable().then(() => {
   //     expect(component.todos).toBe([]);
   //   });
-  // });  
+  // });
 });
