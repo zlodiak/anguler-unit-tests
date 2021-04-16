@@ -1,7 +1,7 @@
 <p>page1 works!</p>
 
-<ng-container *ngIf="todos.length">
-    <div *ngFor="let todo of todos" class="todo-elem">
-        {{ todo.id }} - {{ todo.title }}
-    </div>
+<ng-container *ngIf="todos?.length">
+  <div *ngFor="let todo of todos" class="todo-elem">
+    {{ todo.id }} - {{ todo.title }}
+  </div>
 </ng-container>
