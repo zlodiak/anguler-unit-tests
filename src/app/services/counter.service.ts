@@ -7,6 +7,10 @@ import { Observable, of } from 'rxjs';
 })
 export class CounterService {
   count: number = 0;
+  random: any = {
+    value: 123,
+    date: 456,
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -20,5 +24,9 @@ export class CounterService {
 
   getObservableValue() {
     return of('observable value');
+  }
+
+  getRandom() {
+    return this.random;
   }
 }
