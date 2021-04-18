@@ -37,18 +37,21 @@ describe('Page1Component', () => {
     expect(component.remark).toEqual('setted');
   });
 
-  // it('should fill todos', () => {
-  //   const todos = of([
-  //     {
-  //       completed: false,
-  //       id: 1,
-  //       title: 'title1',
-  //       userId: 1,
-  //     },
-  //   ]);
-  //   spy = spyOn(todosService, 'getTodos').and.returnValue(todos);
-  //   expect(component.todos).toEqual(todos);
-  // });
+  it('should fill todos', () => {
+    const data = [
+      {
+        completed: false,
+        id: 1,
+        title: 'title1',
+        userId: 1,
+      },
+    ];
+    const todosObs = of(data);
+
+    spy = spyOn(todosService, 'getTodos').and.returnValue(todosObs);
+    component.ngOnInit();
+    expect(component.todos).toEqual(data);
+  });
 
   it('should fill random', () => {
     const random = {
