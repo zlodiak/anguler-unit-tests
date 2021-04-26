@@ -2,6 +2,10 @@
   page1 works! <span id="title">{{ title }}</span>
 </p>
 
+<span class="phrase">qwerty</span>
+<br />
+<span class="remark2">{{ remark2 }}</span>
+
 <ng-container *ngIf="todos?.length">
   <div *ngFor="let todo of todos" class="todo-elem">
     {{ todo.id }} - {{ todo.title }}

@@ -62,4 +62,17 @@ describe('Page1Component', () => {
     component.ngOnInit();
     expect(component.random).toEqual(random);
   });
+
+  it('elem should contain phrase exactly', () => {
+    const compliedComponent: HTMLElement = fixture.nativeElement;
+    const phraseElem = compliedComponent.querySelector('.phrase');
+    expect(phraseElem.textContent).toEqual('qwerty');
+    expect(phraseElem.textContent).not.toEqual('asdffgh');
+  });
+
+  it('value must bind to template after changeDetection', () => {
+    const compliedComponent: HTMLElement = fixture.nativeElement;
+    const remark2Elem = compliedComponent.querySelector('.remark2');
+    expect(remark2Elem.textContent).toContain(component.remark2);
+  });
 });

@@ -11,6 +11,7 @@ export class Page1Component implements OnInit {
   todos: any;
   title: string = 'component1';
   remark: string = 'initial';
+  remark2: string = 'initial2';
   random: any;
 
   constructor(

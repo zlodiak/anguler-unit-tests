@@ -2,7 +2,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CounterService } from './counter.service';
 
@@ -39,6 +39,20 @@ describe('CounterService', () => {
         .subscribe((value) => expect(value).toBe('observable value'));
     })
   );
+
+  it('test should wait for CounterService.getObservableValue using fakeAsync', fakeAsync(() => {
+    service
+      .getObservableValue()
+      .subscribe((value) => expect(value).toBe('observable value'));
+    flush();
+  }));
+
+  it('#getObservableValue should return value from observable (use done)', (done: DoneFn) => {
+    service.getObservableValue().subscribe((value) => {
+      expect(value).toBe('observable value');
+      done();
+    });
+  });
 
   it(
     'test should method of CounterService.getGirls be GET',
@@ -79,7 +93,6 @@ describe('CounterService', () => {
     ];
 
     service.getGirls().subscribe((girls) => {
-      console.log(girls);
       expect(girls).toEqual(val);
     });
 
