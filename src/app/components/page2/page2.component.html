@@ -1,8 +1,8 @@
 <p>page2 works!</p>
 
-<button (click)="getUsers()">get all users</button>
+<button id="btn" (click)="getUsers()">get all users</button>
 <br />
-<input type="checkbox" [(ngModel)]="isShowFullInfo" /> show full info
+<input id="full" type="checkbox" [(ngModel)]="isShowFullInfo" /> show full info
 <br />
 <input
   type="number"
@@ -11,7 +11,7 @@
 />
 
 <ng-container *ngIf="users?.length">
-  <div *ngFor="let user of users">
+  <div *ngFor="let user of users" class="user">
     {{ user.id }} - {{ user.name }}
     <ul *ngIf="isShowFullInfo">
       <li>email: {{ user.email }}</li>
