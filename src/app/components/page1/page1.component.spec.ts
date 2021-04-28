@@ -5,6 +5,7 @@ import { TodosService } from 'src/app/services/todos.service';
 import { Page1Component } from './page1.component';
 import { of } from 'rxjs';
 import { CounterService } from 'src/app/services/counter.service';
+import { By } from '@angular/platform-browser';
 
 describe('Page1Component', () => {
   let component: Page1Component;
@@ -12,6 +13,7 @@ describe('Page1Component', () => {
   let spy: any;
   let todosService: TodosService;
   let counterService: CounterService;
+  let debugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,6 +26,7 @@ describe('Page1Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(Page1Component);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
     fixture.detectChanges();
     todosService = TestBed.inject(TodosService);
     counterService = TestBed.inject(CounterService);
@@ -37,7 +40,7 @@ describe('Page1Component', () => {
     expect(component.remark).toEqual('setted');
   });
 
-  it('should fill todos', () => {
+  it('should fill todos from http', () => {
     const data = [
       {
         completed: false,
@@ -51,6 +54,40 @@ describe('Page1Component', () => {
     spy = spyOn(todosService, 'getTodos').and.returnValue(todosObs);
     component.ngOnInit();
     expect(component.todos).toEqual(data);
+  });
+
+  it('should display todos from without http', () => {
+    const data = [
+      {
+        completed: false,
+        id: 1,
+        title: 'title1',
+        userId: 1,
+      },
+    ];
+    component.todos = data;
+    fixture.detectChanges();
+    const compliedComponent = fixture.debugElement.nativeElement;
+    const todoElem = compliedComponent.querySelector('.todo-elem');
+    expect(todoElem.innerHTML).toContain(data[0].title);
+  });
+
+  it('should display todos from with http', () => {
+    const data = [
+      {
+        completed: false,
+        id: 1,
+        title: 'title1',
+        userId: 1,
+      },
+    ];
+    const todosObs = of(data);
+
+    spy = spyOn(todosService, 'getTodos').and.returnValue(todosObs);
+    component.ngOnInit();
+
+    const todoElem = fixture.debugElement.query(By.css('.todo-elem'));
+    expect('1 - title1').toContain(data[0].title);
   });
 
   it('should fill random', () => {

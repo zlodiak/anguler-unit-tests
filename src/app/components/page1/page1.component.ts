@@ -21,7 +21,6 @@ export class Page1Component implements OnInit {
 
   ngOnInit() {
     this.todosService.getTodos().subscribe((todos) => {
-      console.log(todos);
       this.todos = todos;
     });
     this.remark = 'setted';
