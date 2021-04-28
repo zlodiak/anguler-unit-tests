@@ -8,9 +8,8 @@ describe('Page3Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Page3Component ]
-    })
-    .compileComponents();
+      declarations: [Page3Component],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -32,7 +31,9 @@ describe('Page3Component', () => {
   it('should be getWordsFromComponet-button', () => {
     fixture.detectChanges();
     const compliedComponent = fixture.debugElement.nativeElement;
-    expect(compliedComponent.querySelector('#getWordsFromComponet')).toBeTruthy();
+    expect(
+      compliedComponent.querySelector('#getWordsFromComponet')
+    ).toBeTruthy();
   });
 
   it('should display list after getWordsFromComponent-button', () => {
@@ -40,10 +41,11 @@ describe('Page3Component', () => {
     const compliedComponent = fixture.debugElement.nativeElement;
 
     const btn = compliedComponent.querySelector('#getWordsFromComponet');
-    btn.dispatchEvent(new Event('click'));
+    // btn.dispatchEvent(new Event('click'));
+    btn.click();
     fixture.detectChanges();
 
-    expect(compliedComponent.querySelector('.word-elem')).toBeTruthy();  
+    expect(compliedComponent.querySelector('.word-elem')).toBeTruthy();
   });
 
   it('should display list after getWords-button', () => {
@@ -54,7 +56,7 @@ describe('Page3Component', () => {
     btn.dispatchEvent(new Event('click'));
     fixture.detectChanges();
 
-    expect(compliedComponent.querySelector('.word-el')).toBeTruthy();  
+    expect(compliedComponent.querySelector('.word-el')).toBeTruthy();
   });
 
   it('should display 2 buttons', () => {

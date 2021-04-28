@@ -100,4 +100,10 @@ describe('CounterService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(val);
   });
+
+  it('increment counter', () => {
+    expect(service.count).toBe(0);
+    service.incrementCount();
+    expect(service.count).toBe(1);
+  });
 });

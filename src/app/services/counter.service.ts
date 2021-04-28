@@ -29,4 +29,8 @@ export class CounterService {
   getRandom() {
     return this.random;
   }
+
+  incrementCount() {
+    this.count++;
+  }
 }
