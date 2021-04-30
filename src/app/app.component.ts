@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CounterService } from './services/counter.service';
 
 @Component({
@@ -7,7 +8,9 @@ import { CounterService } from './services/counter.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  // constructor(private counterService: CounterService) {
-  //   counterService.getGirls().subscribe(console.log);
-  // }
+  constructor(private router: Router) {}
+
+  go() {
+    this.router.navigateByUrl('/page3');
+  }
 }

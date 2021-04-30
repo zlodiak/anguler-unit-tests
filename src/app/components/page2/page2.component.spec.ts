@@ -123,7 +123,6 @@ describe('Page2Component', () => {
     // const userElem = nativeElement.querySelector('.user');
     const userElem = fixture.debugElement.query(By.css('.user')).nativeElement;
 
-    console.log(userElem);
     expect(userElem.textContent).toContain(component.users[0].email);
     expect(userElem.textContent).toContain(component.users[0].address.zipcode);
     expect(userElem.textContent).toContain(component.users[0].address.city);
